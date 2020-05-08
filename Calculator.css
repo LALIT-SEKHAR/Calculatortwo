@@ -99,6 +99,7 @@ button{
     box-shadow: -5px -5px 6px white,
                 5px 5px 6px rgb(189, 189, 189);
     transition: ease 100ms;
+    outline: none;
 }
 button:active{
     transform: scale(0.9);

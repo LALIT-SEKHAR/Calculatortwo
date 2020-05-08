@@ -20,11 +20,19 @@ const equal = document.querySelector('#equal');
 const paratwo = document.querySelector('#displaypresent');
 const paraone = document.querySelector('#displaypast');
 
+//for background calculation
+let calvalue;
+
 const run = (value) => {
     // console.log(value);
     if (value*0 === 0) {
+        //if the value is a number
         paratwo.innerHTML = paratwo.innerHTML+value;
+        calvalue = paratwo.innerHTML;
     } else {
+        //if the value is not a number
+        // console.log(value);
+        
         asiner(value)
     }
 }
@@ -48,17 +56,114 @@ point.addEventListener("click", () => {run(point.innerHTML)});
 substration.addEventListener("click", () => {run(substration.innerHTML)});
 equal.addEventListener("click", () => calculate());
 
+
 const asiner = (value) => {
-    console.log(value);
-    // paraone.innerHTML = paratwo.innerHTML + value
-    paratwo.innerHTML = (paratwo.innerHTML + value);
+
+    if ( value === '/' ) {
+        
+        // for not repiting the same assiner
+        let a = (paratwo.innerHTML).lastIndexOf('/');
+        let b = ((paratwo.innerHTML).length - 1);
+
+        if ( a !== b ) {
+            paratwo.innerHTML = (paratwo.innerHTML + '/');
+            calvalue = calvalue + '/';
+        }
+
+    } else if ( value === 'X' ) {
+        
+        // for not repiting the same assiner
+        let a = (paratwo.innerHTML).lastIndexOf('X');
+        let b = ((paratwo.innerHTML).length - 1);
+
+        if ( a !== b ) {
+            paratwo.innerHTML = (paratwo.innerHTML + 'X');
+            calvalue = calvalue + '*';
+        }
+
+    } else if ( value === '+' ) {
+        
+        // for not repiting the same assiner
+        let a = (paratwo.innerHTML).lastIndexOf('+');
+        let b = ((paratwo.innerHTML).length - 1);
+
+        if ( a !== b ) {
+            paratwo.innerHTML = (paratwo.innerHTML + '+');
+            calvalue = calvalue + '+';
+        }
+
+    } else if ( value === '-' ) {
+        
+        // for not repiting the same assiner
+        let a = (paratwo.innerHTML).lastIndexOf('-');
+        let b = ((paratwo.innerHTML).length - 1);
+
+        if ( a !== b ) {
+            paratwo.innerHTML = (paratwo.innerHTML + '-');
+            calvalue = calvalue + '-';
+        }
+
+    } else if ( value === '.' ) {
+
+        // for not repiting the same assiner
+        let a = (paratwo.innerHTML).lastIndexOf('.');
+        let b = ((paratwo.innerHTML).length - 1);
+
+        if ( a !== b ) {
+            paratwo.innerHTML = (paratwo.innerHTML + '.');
+            calvalue = calvalue + '.';
+        }
+        
+    } 
+    //TODO: for bracket (-)
+    // else if ( value === '+/-' ) {
+        
+    //     // for not repiting the same assiner
+    //     let a = (paratwo.innerHTML).lastIndexOf('+/-');
+    //     let b = ((paratwo.innerHTML).length - 1);
+
+    //     if ( a !== b ) {
+    //         paratwo.innerHTML = (paratwo.innerHTML + '+/-');
+    //         calvalue = calvalue + ;
+    //     }
+
+    // }
+
+
+    // console.log(value);
+    // // paraone.innerHTML = paratwo.innerHTML + value
+    // paratwo.innerHTML = (paratwo.innerHTML + value);
 }
+
+
+
+
+
 
 //for calculate the total
 const calculate = () => {
     // console.log(paraone.innerHTML);
-    paraone.innerHTML = paratwo.innerHTML
-    paratwo.innerHTML = eval(paratwo.innerHTML)
+    let a;
+    let b;
+
+    a = (paratwo.innerHTML).lastIndexOf('/');
+    b = (paratwo.innerHTML).lastIndexOf('X');
+    c = (paratwo.innerHTML).lastIndexOf('+');
+    d = (paratwo.innerHTML).lastIndexOf('-');
+    e = (paratwo.innerHTML).lastIndexOf('.');
+    f = (paratwo.innerHTML).lastIndexOf('+/-');
+    z = ((paratwo.innerHTML).length - 1);
+
+    // console.log(a);
+    // console.log(z);
+    
+    // for comparision for if any asiner in the last
+    if( !( a === z || b === z || c === z || d === z || e === z || f === z )) {
+        
+        paraone.innerHTML = paratwo.innerHTML;
+        paratwo.innerHTML = eval(paratwo.innerHTML);
+
+    }
 }
 
 //clear everything
