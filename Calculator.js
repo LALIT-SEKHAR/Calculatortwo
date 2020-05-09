@@ -28,7 +28,13 @@ const run = (value) => {
     if (value*0 === 0) {
         //if the value is a number
         paratwo.innerHTML = paratwo.innerHTML+value;
-        calvalue = paratwo.innerHTML;
+        calvalue = calvalue+value;
+        console.log(calvalue);
+        if (calvalue === NaN) {
+            console.log('ok');
+        } else {
+            console.log('not ok');
+        }
     } else {
         //if the value is not a number
         // console.log(value);
@@ -50,7 +56,7 @@ seven.addEventListener("click", () => {run(seven.innerHTML)});
 eight.addEventListener("click", () => {run(eight.innerHTML)});
 nine.addEventListener("click", () => {run(nine.innerHTML)});
 adition.addEventListener("click", () => {run(adition.innerHTML)});
-plusmines.addEventListener("click", () => {run(plusmines.innerHTML)});
+// plusmines.addEventListener("click", () => {run(plusmines.innerHTML)});
 zero.addEventListener("click", () => {run(zero.innerHTML)});
 point.addEventListener("click", () => {run(point.innerHTML)});
 substration.addEventListener("click", () => {run(substration.innerHTML)});
@@ -77,8 +83,10 @@ const asiner = (value) => {
         let b = ((paratwo.innerHTML).length - 1);
 
         if ( a !== b ) {
-            paratwo.innerHTML = (paratwo.innerHTML + 'X');
+            paratwo.innerHTML = (paratwo.innerHTML + '*');
             calvalue = calvalue + '*';
+            console.log(calvalue);
+            
         }
 
     } else if ( value === '+' ) {
@@ -162,6 +170,8 @@ const calculate = () => {
         
         paraone.innerHTML = paratwo.innerHTML;
         paratwo.innerHTML = eval(paratwo.innerHTML);
+        console.log(calvalue)
+        
 
     }
 }
